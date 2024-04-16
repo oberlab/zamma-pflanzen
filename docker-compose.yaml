@@ -44,15 +44,5 @@ services:
     depends_on:
       - strapi
 
-  nginx:
-    image: nginx:latest
-    volumes:
-      - ./nginx.conf:/etc/nginx/nginx.conf
-    ports:
-      - "80:80"
-    depends_on:
-      - web
-      - strapi
-
 volumes:
   postgres-data:
