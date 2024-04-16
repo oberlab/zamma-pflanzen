@@ -34,8 +34,6 @@ services:
       - ./strapi/api:/opt/app/src/api
       - ./strapi/components:/opt/app/src/components
       - ./.env:/opt/app/.env
-    ports:
-      - "1337:1337"
     depends_on:
       - postgres
     command: ["npm", "run", "develop"]
@@ -43,8 +41,6 @@ services:
   web:
     build: .
     restart: always
-    ports:
-      - "3000:3000"
     depends_on:
       - strapi
 
