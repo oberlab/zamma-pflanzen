@@ -1,11 +1,27 @@
 <script lang="ts">
-  export let value = 0;
+  import { onMount } from "svelte";
+  import { CountUp } from "countup.js";
+
+  export let value = 100;
   export let type = "";
   export let title = "";
+
+  const countOptions = {
+    duration: 2,
+    enableScrollSpy: true,
+    scrolscrollSpyOnce: true,
+  };
+
+  let targetEl: HTMLElement, count;
+
+  onMount(() => {
+    count = new CountUp(targetEl, value, countOptions);
+    count.start();
+  });
 </script>
 
 <main class="number">
-  <h3>{value}{type}</h3>
+  <h3><b bind:this={targetEl}>-</b>{type}</h3>
   <p>{title}</p>
 </main>
 
@@ -22,6 +38,17 @@
       font-family: "Aladin";
       color: var(--blue);
       font-size: 2.5rem;
+    }
+
+    @media (max-width: 768px) {
+      padding-top: 2rem;
+      h3 {
+        font-size: 6rem;
+      }
+
+      p {
+        font-size: 1.5rem;
+      }
     }
   }
 </style>
