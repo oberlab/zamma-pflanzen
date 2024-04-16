@@ -34,7 +34,7 @@
       <Number value={150} title="Bäume werden gepflanzt" />
       <Number value={150} type="m" title="Hecke werden gepflanzt" />
       <Number value={479} type="€" title="Spenden erhalten" />
-      <Number value={36} title="Pflanzhelfer gefunden" />
+      <Number value={6} title="Pflanzhelfer gefunden" />
     </div>
   </div>
 
@@ -104,6 +104,7 @@
 
       .logos {
         display: flex;
+        flex-direction: row;
         justify-content: center;
         gap: 2rem;
         margin-top: 3rem;
@@ -117,12 +118,30 @@
           border-radius: 30px;
         }
       }
+
+      @media (max-width: 768px) {
+        margin-top: 10vh;
+        h1 {
+          font-size: 3rem;
+        }
+
+        .logos {
+          flex-direction: column;
+          gap: 1rem;
+          margin-top: 2rem;
+
+          img {
+            height: 6rem;
+            width: 15rem;
+          }
+        }
+      }
     }
 
     .stats {
       background-color: var(--white);
       margin-top: 10rem;
-      padding-bottom: 3rem;
+      padding-bottom: 10rem;
 
       .trees {
         position: relative;
@@ -140,8 +159,7 @@
 
       h2 {
         color: var(--green);
-        font-size: 1.5rem;
-        margin-top: -2rem;
+        font-size: 2rem;
         margin-bottom: 6rem;
       }
 
@@ -152,6 +170,27 @@
         gap: 2rem;
         margin-top: 2rem;
         margin-inline: 5rem;
+      }
+
+      @media (max-width: 768px) {
+        padding-bottom: 5rem;
+        .trees {
+          top: -3rem;
+          img {
+            width: 3rem;
+            margin-left: 1rem;
+          }
+        }
+
+        h2 {
+          font-size: 1.8rem;
+          margin-top: -1rem;
+          margin-bottom: 0;
+        }
+
+        .nums {
+          margin-inline: 2rem;
+        }
       }
     }
 
@@ -211,6 +250,32 @@
           font-size: 1.3rem;
           font-weight: 400;
           padding: 0;
+        }
+      }
+
+      @media (max-width: 768px) {
+        padding-block: 2rem;
+
+        h2 {
+          font-size: 2rem;
+        }
+
+        p {
+          font-size: 1rem;
+        }
+
+        h3 {
+          font-size: 1rem;
+        }
+
+        .iban {
+          h2 {
+            font-size: 1.2rem;
+          }
+
+          h3 {
+            font-size: 1rem;
+          }
         }
       }
     }
