@@ -1,0 +1,34 @@
+@font-face {
+  font-family: "Rubik";
+  src: url("/src/assets/Rubik.ttf");
+}
+
+:root {
+  font-family: Rubik, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color: #013157;
+  background-color: #fffbfc;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+#app {
+  margin: 0 auto;
+  text-align: center;
+}
