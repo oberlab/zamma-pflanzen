@@ -9,7 +9,7 @@
   const countOptions = {
     duration: 2,
     enableScrollSpy: true,
-    scrolscrollSpyOnce: true,
+    scrollSpyOnce: true,
   };
 
   let targetEl: HTMLElement, count;
