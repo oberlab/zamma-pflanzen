@@ -13,8 +13,10 @@
       align-items: center;
       justify-content: center;
       text-decoration: none;
-      color: inherit;
-      margin-bottom: 2rem;
+      color: var(--darkblue);
+      background-color: var(--white);
+      font-family: "Rubik";
+      padding-bottom: 2rem;
 
       h1 {
         font-size: 1.3rem;

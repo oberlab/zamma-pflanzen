@@ -20,10 +20,7 @@
   --darkblue: #172a3a;
   --turquoise: #004346;
 
-  font-family: Rubik, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
+  font-family: "Aclonica", sans-serif;
   color: var(--white);
   background-color: var(--green);
 
@@ -42,15 +39,6 @@
 body {
   min-width: 320px;
   min-height: 100vh;
-}
-
-h1 {
-  font-family: Aladin, system-ui, Avenir, Helvetica, Arial, sans-serif;
-}
-
-h2,
-p {
-  font-family: Aclonica, system-ui, Avenir, Helvetica, Arial, sans-serif;
 }
 
 #app {

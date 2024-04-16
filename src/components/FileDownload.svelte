@@ -17,8 +17,9 @@
       width: 100%;
       display: flex;
       align-items: center;
-      color: #fffbfc;
-      background-color: #7d8ca3;
+      font-family: "Rubik";
+      color: var(--white);
+      background-color: var(--turquoise);
       margin: 1rem 0;
       padding: 1rem;
       border-radius: 20px;
