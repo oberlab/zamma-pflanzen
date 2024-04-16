@@ -10,20 +10,7 @@ services:
       POSTGRES_DB: ${DATABASE_NAME}
       PGDATA: /var/lib/postgresql/data/pgdata
     ports:
-      - "5432:5432"
-
-  # strapi:
-  #   image: elestio/strapi-${NODE_ENV}:latest
-  #   restart: always
-  #   env_file: .env
-  #   volumes:
-  #     - ./strapi/config:/opt/app/config
-  #     - ./strapi/api:/opt/app/src/api
-  #     - ./.env:/opt/app/.env
-  #   ports:
-  #     - "1337:1337"
-  #   depends_on:
-  #     - postgres
+      - "5433:5432"
 
   strapi:
     image: ghcr.io/sehrgutesoftware/strapi-dockerized:latest
@@ -34,6 +21,8 @@ services:
       - ./strapi/api:/opt/app/src/api
       - ./strapi/components:/opt/app/src/components
       - ./.env:/opt/app/.env
+    ports:
+      - "1338:1337"
     depends_on:
       - postgres
     command: ["npm", "run", "develop"]
@@ -41,6 +30,8 @@ services:
   web:
     build: .
     restart: always
+    ports:
+      - "3000:3000"
     depends_on:
       - strapi
 
