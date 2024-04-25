@@ -42,7 +42,7 @@
       }
 
       &:hover {
-        background-color: #5c6d8a;
+        background-color: var(--darkblue);
       }
 
       @media (max-width: 768px) {

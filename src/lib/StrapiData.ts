@@ -20,7 +20,15 @@ export async function getDownloadFiles(): Promise<DownloadFile[]> {
 
   let files: DownloadFile[] = [];
   Files.forEach((file) => {
-    // const fileData = await fetch(`${STRAPI_URL}/api/files/${file.id}`);
+    const fileData = fetch(`${STRAPI_URL}/api/upload/files/${file.id}`)
+      .then((res) => res.json())
+      .then((res) => {
+        files.push({
+          id: file.id,
+          name: file.Titel,
+          url: res.url,
+        });
+      });
   });
 
   return files;

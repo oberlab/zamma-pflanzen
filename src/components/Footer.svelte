@@ -16,7 +16,7 @@
       color: var(--darkblue);
       background-color: var(--white);
       font-family: "Rubik";
-      padding-bottom: 2rem;
+      padding-block: 2rem;
 
       h1 {
         font-size: 1.3rem;
