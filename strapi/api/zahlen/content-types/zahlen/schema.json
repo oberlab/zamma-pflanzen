@@ -1,0 +1,27 @@
+{
+  "kind": "collectionType",
+  "collectionName": "zahlens",
+  "info": {
+    "singularName": "zahlen",
+    "pluralName": "zahlens",
+    "displayName": "Zahlen"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Titel": {
+      "type": "string",
+      "required": true
+    },
+    "Wert": {
+      "type": "integer",
+      "required": true,
+      "default": 0
+    },
+    "Einheit": {
+      "type": "string"
+    }
+  }
+}

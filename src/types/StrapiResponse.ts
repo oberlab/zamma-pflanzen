@@ -1,10 +1,3 @@
-export type ImageResponse = {
-  data: {
-    id: number;
-  };
-  meta: {};
-};
-
 export type Datei = {
   data: {
     id: number;
@@ -30,4 +23,23 @@ export type DownloadFile = {
   id: number;
   Titel: string;
   Datei: string;
+};
+
+export type StatsResponse = {
+  data: {
+    id: number;
+    attributes: {
+      Titel: string;
+      Wert: number;
+      Einheit: string;
+    };
+  }[];
+  meta: {};
+};
+
+export type Stat = {
+  id: number;
+  Titel: string;
+  Wert: number;
+  Einheit: string;
 };

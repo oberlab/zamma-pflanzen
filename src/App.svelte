@@ -3,13 +3,16 @@
   import Number from "./components/Number.svelte";
   import FileDownload from "./components/FileDownload.svelte";
   import Footer from "./components/Footer.svelte";
-  import { getDownloadFiles } from "./lib/StrapiData";
-  import type { DownloadFile } from "./types/StrapiResponse";
+  import { getDownloadFiles, getStats } from "./lib/StrapiData";
+  import type { DownloadFile, Stat } from "./types/StrapiResponse";
 
   let DownloadFiles: DownloadFile[] = [];
+  let Stats: Stat[] = [];
 
   onMount(async () => {
     DownloadFiles = await getDownloadFiles();
+    Stats = await getStats();
+    console.log(Stats);
   });
 </script>
 
@@ -71,10 +74,14 @@
     </div>
     <h2>Aktueller Stand der Pflanzaktion</h2>
     <div class="nums">
-      <Number value={0} title="Bäume werden gepflanzt" />
+      <!-- <Number value={0} title="Bäume werden gepflanzt" />
       <Number value={0} type="m" title="Hecke werden gepflanzt" />
       <Number value={0} type="€" title="Spenden erhalten" />
-      <Number value={0} title="Pflanzhelfer gefunden" />
+      <Number value={0} title="Pflanzhelfer gefunden" /> -->
+
+      {#each Stats as stat}
+        <Number title={stat.Titel} value={stat.Wert} type={stat.Einheit} />
+      {/each}
     </div>
   </div>
 
