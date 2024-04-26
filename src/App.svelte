@@ -3,7 +3,8 @@
   import Number from "./components/Number.svelte";
   import FileDownload from "./components/FileDownload.svelte";
   import Footer from "./components/Footer.svelte";
-  import { getDownloadFiles, type DownloadFile } from "./lib/StrapiData";
+  import { getDownloadFiles } from "./lib/StrapiData";
+  import type { DownloadFile } from "./types/StrapiResponse";
 
   let DownloadFiles: DownloadFile[] = [];
 
@@ -53,11 +54,9 @@
     </div>
     <!-- {#if DownloadFiles.length > 0} -->
     <div class="downloads">
-      <!-- {#each DownloadFiles as file}
-            <FileDownload title={file.name} url={file.url} />
-          {/each} -->
-      <FileDownload title="Mitmachformular" url="Anmeldeformular.pdf" />
-      <FileDownload title="Info Flyer" url="BNHK_Zamma_Falzflyer_6S_01.pdf" />
+      {#each DownloadFiles as file}
+        <FileDownload title={file.Titel} url={file.Datei} />
+      {/each}
     </div>
     <!-- {/if} -->
   </div>

@@ -5,18 +5,29 @@ export type ImageResponse = {
   meta: {};
 };
 
+export type Datei = {
+  data: {
+    id: number;
+    attributes: {
+      name: string;
+      url: string;
+    };
+  };
+};
+
 export type DownloadFilesResponse = {
   data: {
     id: number;
     attributes: {
-      createdAt: string;
-      updatedAt: string;
-      publishedAt: string;
-      File: {
-        id: number;
-        Titel: string;
-      }[];
+      Titel: string;
+      Datei: Datei;
     };
-  };
+  }[];
   meta: {};
+};
+
+export type DownloadFile = {
+  id: number;
+  Titel: string;
+  Datei: string;
 };
