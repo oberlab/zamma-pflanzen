@@ -3,16 +3,18 @@
   import Number from "./components/Number.svelte";
   import FileDownload from "./components/FileDownload.svelte";
   import Footer from "./components/Footer.svelte";
-  import { getDownloadFiles, getStats } from "./lib/StrapiData";
+  import { getDownloadFiles, getStats, getUeber } from "./lib/StrapiData";
   import type { DownloadFile, Stat } from "./types/StrapiResponse";
+  import SvelteMarkdown from "svelte-markdown";
 
   let DownloadFiles: DownloadFile[] = [];
   let Stats: Stat[] = [];
+  let Ueber: string = "";
 
   onMount(async () => {
     DownloadFiles = await getDownloadFiles();
     Stats = await getStats();
-    console.log(Stats);
+    Ueber = await getUeber();
   });
 </script>
 
@@ -21,32 +23,7 @@
     <h1>ZAMMA <br /> Pflanzen</h1>
     <div class="about">
       <h2>Über uns</h2>
-      <p>
-        Bäume und Hecken prägen unseren gemeinsamen Lebensraum im ganzen
-        Gemeindegebiet von Holzkirchen. Sie sind Lebensraum für Vögel und Tiere,
-        spenden Schatten, reinigen die Luft, speichern CO2 und sind schön
-        anzuschauen. Davon kann es in Zeiten des Klimawandels nicht genug geben!
-        <br />
-        <br />
-        Wir wollen daher drei Personengruppen zusammenbringen:
-      </p>
-      <ul>
-        <li>
-          Privatpersonen, Vereine, Unternehmen, Landwirte, Kirchengemeinden, die
-          auf ihrem Grund einen Baum oder eine zwei- oder dreireihige Naturhecke
-          aus heimischen Sträuchern anlegen möchten
-        </li>
-        <li>
-          Personen, die sich an dieser Pflanzung mit einer Spende finanziell
-          beteiligen möchten
-        </li>
-        <li>Personen, die beim Pflanzen helfen möchten</li>
-      </ul>
-      <p>
-        Während dem Festival sammeln wir die Meldungen für alle drei Gruppen. An
-        einem oder mehreren geeigneten Tagen im Herbst 2024 werden die Pflanzen
-        dann gesetzt.
-      </p>
+      <SvelteMarkdown source={Ueber} />
       <h3>
         Seid ihr dabei? Dann füllt einfach das Anmeldeformular aus und schickt
         es an
@@ -74,11 +51,6 @@
     </div>
     <h2>Aktueller Stand der Pflanzaktion</h2>
     <div class="nums">
-      <!-- <Number value={0} title="Bäume werden gepflanzt" />
-      <Number value={0} type="m" title="Hecke werden gepflanzt" />
-      <Number value={0} type="€" title="Spenden erhalten" />
-      <Number value={0} title="Pflanzhelfer gefunden" /> -->
-
       {#each Stats as stat}
         <Number title={stat.Titel} value={stat.Wert} type={stat.Einheit} />
       {/each}
@@ -123,6 +95,22 @@
 </main>
 
 <style lang="scss">
+  // weird shit for svelte-markdown in order to style
+  :global(ul, ol) {
+    padding-inline: 2rem;
+    padding-block: 1rem;
+  }
+  :global(li) {
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+  }
+
+  :global(.about p) {
+    font-size: 1.3rem;
+    text-align: justify;
+    padding-block: 0.5rem;
+  }
+
   .hero {
     display: flex;
     flex-direction: column;
@@ -137,9 +125,7 @@
     }
 
     .about {
-      position: relative;
-      left: 50%;
-      transform: translateX(-50%);
+      margin: 0 auto;
 
       text-align: left;
       max-width: 1200px;
@@ -155,17 +141,6 @@
       p {
         font-size: 1.3rem;
         text-align: justify;
-      }
-
-      ul {
-        list-style-type: disc;
-        padding-inline: 2rem;
-        padding-block: 1rem;
-
-        li {
-          font-size: 1.3rem;
-          margin-bottom: 0.5rem;
-        }
       }
 
       h3 {

@@ -4,11 +4,15 @@ import type {
   DownloadFilesResponse,
   Stat,
   StatsResponse,
+  UeberResponse,
 } from "../types/StrapiResponse";
 import { STRAPI_URL } from "./config";
 
 export async function getDownloadFiles(): Promise<DownloadFile[]> {
   const response = await fetch(`${STRAPI_URL}/api/downloads?populate=Datei`);
+  if (!response.ok) {
+    return [];
+  }
   const data: DownloadFilesResponse = await response.json();
 
   var ret: DownloadFile[] = [];
@@ -26,6 +30,9 @@ export async function getDownloadFiles(): Promise<DownloadFile[]> {
 
 export async function getStats(): Promise<Stat[]> {
   const response = await fetch(`${STRAPI_URL}/api/zahlens`);
+  if (!response.ok) {
+    return [];
+  }
   const data: StatsResponse = await response.json();
 
   var ret: Stat[] = [];
@@ -40,4 +47,14 @@ export async function getStats(): Promise<Stat[]> {
   });
 
   return ret;
+}
+
+export async function getUeber(): Promise<string> {
+  const response = await fetch(`${STRAPI_URL}/api/ueber-uns`);
+  if (!response.ok) {
+    return "";
+  }
+  const data: UeberResponse = await response.json();
+
+  return data.data.attributes.Text;
 }

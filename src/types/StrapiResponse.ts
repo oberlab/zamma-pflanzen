@@ -43,3 +43,13 @@ export type Stat = {
   Wert: number;
   Einheit: string;
 };
+
+export type UeberResponse = {
+  data: {
+    id: number;
+    attributes: {
+      Text: string;
+    };
+  };
+  meta: {};
+};
