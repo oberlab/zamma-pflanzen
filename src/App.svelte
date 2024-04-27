@@ -12,7 +12,7 @@
   let Ueber: string = "";
 
   onMount(async () => {
-    DownloadFiles = await getDownloadFiles();
+    // DownloadFiles = await getDownloadFiles(); // TEMPORARY DISABLED
     Stats = await getStats();
     Ueber = await getUeber();
   });
@@ -34,9 +34,11 @@
     </div>
     <!-- {#if DownloadFiles.length > 0} -->
     <div class="downloads">
-      {#each DownloadFiles as file}
+      <!-- {#each DownloadFiles as file}
         <FileDownload title={file.Titel} url={file.Datei} />
-      {/each}
+      {/each} -->
+      <FileDownload title="Mitmachformular" url="/Anmeldeformular.pdf" />
+      <FileDownload title="Info Flyer" url="/BNHK_Zamma_Falzflyer_6S_01.pdf" />
     </div>
     <!-- {/if} -->
   </div>
