@@ -15,7 +15,21 @@
     // DownloadFiles = await getDownloadFiles(); // TEMPORARY DISABLED
     Stats = await getStats();
     Ueber = await getUeber();
+
+    sortStats();
   });
+
+  const sortStats = () => {
+    Stats.sort((a, b) => {
+      if (a.id < b.id) {
+        return -1;
+      }
+      if (a.id > b.id) {
+        return 1;
+      }
+      return 0;
+    });
+  };
 </script>
 
 <main>
